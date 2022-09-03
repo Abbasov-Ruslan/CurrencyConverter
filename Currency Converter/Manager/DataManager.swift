@@ -13,8 +13,11 @@ class DataManager {
     var coreDataManger = CoreDataManager()
 
     func saveRoubleUsdRate() {
+        if !coreDataManger.isDatabaseHaveCash() {
+            self.coreDataManger.clearCurrencyDataBase()
+        }
         networkClient.getRoubleToDollarRate(completionHandler: { [weak self] rate in
-            self?.coreDataManger.saveRate(currencyRateFirstToSecond: rate.0, currencyRateSecondToFirst: rate.1, currencyRatio: .rubUsd)
+            self?.coreDataManger.saveRate(currencyRateFirstToSecond: rate.0, currencyRateSecondToFirst: rate.1, currencyRatioFirst: .rubUsd, currencyRatioSecond: .usdRub)
         })
     }
 

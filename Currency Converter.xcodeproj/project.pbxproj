@@ -95,19 +95,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		534D1D9328C0E82400C33EFF /* Extension */ = {
+		534D1D9328C0E82400C33EFF /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		539BCE7728C1BF8C0048EE4A /* Helper */ = {
-			isa = PBXGroup;
-			children = (
+				539BCE7B28C1D3C10048EE4A /* DataManager.swift */,
+				534D1D8728C0E29000C33EFF /* NetworkManager.swift */,
 				539BCE7228C1BF880048EE4A /* CoreDataManager.swift */,
 			);
-			path = Helper;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		53EC010628C0832C001BA692 = {
@@ -133,8 +128,7 @@
 		53EC011128C0832D001BA692 /* Currency Converter */ = {
 			isa = PBXGroup;
 			children = (
-				539BCE7728C1BF8C0048EE4A /* Helper */,
-				534D1D9328C0E82400C33EFF /* Extension */,
+				534D1D9328C0E82400C33EFF /* Manager */,
 				53EC014B28C08805001BA692 /* ViewModel */,
 				53EC014A28C087FC001BA692 /* View */,
 				53EC014828C087EF001BA692 /* Model */,
@@ -168,8 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				534D1D8828C0E29000C33EFF /* CurrencyRateModel.swift */,
-				534D1D8728C0E29000C33EFF /* NetworkManager.swift */,
-				539BCE7B28C1D3C10048EE4A /* DataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
