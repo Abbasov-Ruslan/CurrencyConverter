@@ -8,9 +8,13 @@
 import UIKit
 import Combine
 
+enum ExchnageDirection {
+    case leftToRight
+    case rightToLeft
+}
+
 class ViewController: UIViewController {
 
-    
     @IBOutlet private weak var updateButton: UIButton!
     @IBOutlet private weak var updateTimeButton: UIButton!
     @IBOutlet private weak var changeButton: UIButton!
@@ -18,8 +22,9 @@ class ViewController: UIViewController {
     @IBOutlet private weak var rightNumberField: UITextField!
     
     var viewModel = CurrencyConverterViewModel()
-    var roubleToUsdRate: Double = 0
-    var usdToRoubleRate: Double = 0
+    var currentLeftCurrency: CurrencyName = .dollar
+    var currentRightCurrency: CurrencyName = .rouble
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +34,40 @@ class ViewController: UIViewController {
     }
 
     @IBAction func leftTextFieldChanged(_ sender: Any) {
-        roubleToUsdRate = viewModel.getCurrentRoubleToUSDRate()
-        let leftText: String? = leftNumberField.text
-        guard let leftNumber = Double(leftText ?? "") else {
-            return
-        }
-        rightNumberField.text = String(leftNumber * roubleToUsdRate)
+        rightNumberField.text = getAssociatedTextFieldNumString(numberText: leftNumberField.text,
+                                                                exchangeDirection: .leftToRight)
     }
 
     @IBAction func rightTextFieldChange(_ sender: Any) {
-        roubleToUsdRate = viewModel.getCurrentUsdToRoubleRate()
-        let rightText: String? = rightNumberField.text
-        guard let rightNumber = Double(rightText ?? "") else {
-            return
-        }
-        leftNumberField.text = String(rightNumber * roubleToUsdRate)
+        leftNumberField.text = getAssociatedTextFieldNumString(numberText: rightNumberField.text,
+                                                                exchangeDirection: .rightToLeft)
     }
 
     private func setupButton(button: UIButton) {
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.black.cgColor
+    }
+
+    private func getAssociatedTextFieldNumString(numberText: String?,
+                                                 exchangeDirection: ExchnageDirection) -> String {
+        guard let text = numberText, let number = Double(text) else {
+            return ""
+        }
+
+        var resultString = ""
+
+        switch exchangeDirection {
+        case .leftToRight:
+            resultString = viewModel.getExchangeResultAmountString(from: currentLeftCurrency,
+                                                            to: currentRightCurrency,
+                                                            currencyAmount: number)
+        case .rightToLeft:
+            resultString = viewModel.getExchangeResultAmountString(from: currentRightCurrency,
+                                                            to: currentLeftCurrency,
+                                                            currencyAmount: number)
+        }
+        return resultString
     }
 
 }
