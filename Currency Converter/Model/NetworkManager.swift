@@ -7,10 +7,10 @@
 
 import Foundation
 
-public class NetworkClient {
+public class NetworkManager {
     var apiClient = ApiClient()
-    
-    public func getRoubleToDollarRate() -> (Double, Double) {
+
+    public func getRoubleToDollarRate(completionHandler:@escaping ((Double, Double)) -> Void) {
         var roubleToUsd: Double = 0
         var usdToRouble: Double = 0
         ApiClient.getJson(completionHandler: { (data) in
@@ -22,15 +22,15 @@ public class NetworkClient {
             }
             roubleToUsd = intRubUSD
             usdToRouble = intUsdRub
+            completionHandler((roubleToUsd, usdToRouble))
         })
-        return (roubleToUsd, usdToRouble)
     }
-    
+
 }
 
 struct ApiClient {
 
-    static func getJson(completionHandler: @escaping (CurrencyNetworkModel?) -> ()) {
+    static func getJson(completionHandler: @escaping (CurrencyNetworkModel?) -> Void) {
 
         let jsonUrlString = "https://currate.ru/api/?get=rates&pairs=RUBUSD,USDRUB&key=5b98e6d9e079a12e25af7f9aeed9e738"
 
@@ -55,4 +55,3 @@ struct ApiClient {
         }.resume()
     }
 }
-

@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		534D1D7F28C0E26600C33EFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D7E28C0E26600C33EFF /* ViewController.swift */; };
-		534D1D8928C0E29000C33EFF /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D8728C0E29000C33EFF /* NetworkClient.swift */; };
+		534D1D8928C0E29000C33EFF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D8728C0E29000C33EFF /* NetworkManager.swift */; };
 		534D1D8A28C0E29000C33EFF /* CurrencyRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D8828C0E29000C33EFF /* CurrencyRateModel.swift */; };
 		534D1D8F28C0E65600C33EFF /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D8E28C0E65600C33EFF /* CurrencyConverterViewModel.swift */; };
+		539BCE7328C1BF880048EE4A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539BCE7228C1BF880048EE4A /* CoreDataManager.swift */; };
+		539BCE7C28C1D3C10048EE4A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539BCE7B28C1D3C10048EE4A /* DataManager.swift */; };
 		53EC011328C0832D001BA692 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EC011228C0832D001BA692 /* AppDelegate.swift */; };
 		53EC011A28C0832D001BA692 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53EC011828C0832D001BA692 /* Main.storyboard */; };
 		53EC011D28C0832D001BA692 /* Currency_Converter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53EC011B28C0832D001BA692 /* Currency_Converter.xcdatamodeld */; };
@@ -39,9 +41,11 @@
 
 /* Begin PBXFileReference section */
 		534D1D7E28C0E26600C33EFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		534D1D8728C0E29000C33EFF /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		534D1D8728C0E29000C33EFF /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		534D1D8828C0E29000C33EFF /* CurrencyRateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyRateModel.swift; sourceTree = "<group>"; };
 		534D1D8E28C0E65600C33EFF /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
+		539BCE7228C1BF880048EE4A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		539BCE7B28C1D3C10048EE4A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		53EC010F28C0832D001BA692 /* Currency Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53EC011228C0832D001BA692 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53EC011928C0832D001BA692 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +102,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		539BCE7728C1BF8C0048EE4A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				539BCE7228C1BF880048EE4A /* CoreDataManager.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		53EC010628C0832C001BA692 = {
 			isa = PBXGroup;
 			children = (
@@ -121,11 +133,12 @@
 		53EC011128C0832D001BA692 /* Currency Converter */ = {
 			isa = PBXGroup;
 			children = (
+				539BCE7728C1BF8C0048EE4A /* Helper */,
 				534D1D9328C0E82400C33EFF /* Extension */,
-				534D1D8628C0E27A00C33EFF /* App */,
 				53EC014B28C08805001BA692 /* ViewModel */,
 				53EC014A28C087FC001BA692 /* View */,
 				53EC014828C087EF001BA692 /* Model */,
+				534D1D8628C0E27A00C33EFF /* App */,
 				53EC011E28C08338001BA692 /* Assets.xcassets */,
 				53EC012328C08338001BA692 /* Info.plist */,
 				53EC011B28C0832D001BA692 /* Currency_Converter.xcdatamodeld */,
@@ -155,7 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				534D1D8828C0E29000C33EFF /* CurrencyRateModel.swift */,
-				534D1D8728C0E29000C33EFF /* NetworkClient.swift */,
+				534D1D8728C0E29000C33EFF /* NetworkManager.swift */,
+				539BCE7B28C1D3C10048EE4A /* DataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,6 +201,7 @@
 				53EC010B28C0832C001BA692 /* Sources */,
 				53EC010C28C0832C001BA692 /* Frameworks */,
 				53EC010D28C0832C001BA692 /* Resources */,
+				539BCE8628C1D65C0048EE4A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -302,17 +317,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		539BCE8628C1D65C0048EE4A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "
+";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		53EC010B28C0832C001BA692 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				53EC011D28C0832D001BA692 /* Currency_Converter.xcdatamodeld in Sources */,
+				539BCE7C28C1D3C10048EE4A /* DataManager.swift in Sources */,
 				534D1D7F28C0E26600C33EFF /* ViewController.swift in Sources */,
 				534D1D8F28C0E65600C33EFF /* CurrencyConverterViewModel.swift in Sources */,
+				539BCE7328C1BF880048EE4A /* CoreDataManager.swift in Sources */,
 				53EC011328C0832D001BA692 /* AppDelegate.swift in Sources */,
 				534D1D8A28C0E29000C33EFF /* CurrencyRateModel.swift in Sources */,
-				534D1D8928C0E29000C33EFF /* NetworkClient.swift in Sources */,
+				534D1D8928C0E29000C33EFF /* NetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

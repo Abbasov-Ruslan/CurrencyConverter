@@ -8,13 +8,17 @@
 import Foundation
 
 class CurrencyConverterViewModel {
-    var networkClient = NetworkClient()
-    
-    
+    var dataManager = DataManager()
+
     init() {
+        dataManager.saveRoubleUsdRate()
     }
-    
-    func getCurrentRoubleToUSDRate() -> () {
-        let currentRate = networkClient.getRoubleToDollarRate()
+
+    func getCurrentRoubleToUSDRate() -> Double {
+        return dataManager.getRoubleUsdRate() ?? 0
+    }
+
+    func getCurrentUsdToRoubleRate() -> Double {
+        return dataManager.getUsdToRoubleRate() ?? 0
     }
 }
