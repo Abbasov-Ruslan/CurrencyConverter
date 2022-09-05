@@ -13,11 +13,12 @@ enum ExchnageDirection {
     case rightToLeft
 }
 
-class ViewController: UIViewController {
+class CurrencyMainViewController: UIViewController {
 
     @IBOutlet private weak var updateButton: UIButton!
     @IBOutlet private weak var updateTimeButton: UIButton!
-    @IBOutlet private weak var changeButton: UIButton!
+    @IBOutlet private weak var leftCurrencyButton: UIButton!
+    @IBOutlet private weak var rightCurrecnyButon: UIButton!
     @IBOutlet private weak var leftNumberField: UITextField!
     @IBOutlet private weak var rightNumberField: UITextField!
     
@@ -27,7 +28,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupButton(button: updateButton)
         setupButton(button: updateTimeButton)
-        setupButton(button: changeButton)
+        setupButton(button: leftCurrencyButton)
+        setupButton(button: rightCurrecnyButon)
+
     }
 
     @IBAction func leftTextFieldChange(_ sender: Any) {
@@ -39,9 +42,23 @@ class ViewController: UIViewController {
         leftNumberField.text = getAssociatedTextFieldNumString(numberText: rightNumberField.text,
                                                                exchangeDirection: .rightToLeft)
     }
+    @IBAction func leftCurrencyChangeButtonPress(_ sender: Any) {
+        viewModel.currentCurrencyForChange = .leftToRight
+        performSegue(withIdentifier: "showCurrencyList", sender: nil)
+    }
+    @IBAction func rightCurrencyChangeButtonPress(_ sender: Any) {
+        viewModel.currentCurrencyForChange = .rightToLeft
+        performSegue(withIdentifier: "showCurrencyList", sender: nil)
+    }
 
     @IBAction func updateButtonPress(_ sender: Any) {
+        viewModel.updateCurrencyRate()
     }
+
+    @IBAction func changeTimePeriodButtonPress(_ sender: Any) {
+        performSegue(withIdentifier: "showTimeChageList", sender: nil)
+    }
+
 
     private func setupButton(button: UIButton) {
         button.layer.cornerRadius = 5
@@ -73,9 +90,16 @@ class ViewController: UIViewController {
         return resultString
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+        if segue.identifier == "showCurrencyList",
+           let viewController = segue.destination as? CurrencyChooseViewController {
+            viewController.currencySide = viewModel.currentCurrencyForChange
+        }
+    }
 
-
-
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        updateTimeButton.setTitle(String(viewModel.timePeriodForUpdate), for: .normal)
+    }
 
 }
 

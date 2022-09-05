@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Currency Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Currency_Converter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CurrencyMainViewController" customModule="Currency_Converter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,13 +28,19 @@
                                 <state key="normal" title="Update">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="updateButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lsi-Ly-CU7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-U0-ioP">
                                 <rect key="frame" x="294.33333333333331" y="145.66666666666666" width="117.66666666666669" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="15 min">
+                                <state key="normal" title="15">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeTimePeriodButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wcd-eE-730"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqF-Hh-64O">
                                 <rect key="frame" x="16" y="207" width="129.66666666666666" height="34"/>
@@ -52,26 +58,23 @@
                                     <action selector="rightTextFieldChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="bPt-0g-unq"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-7y-8O9">
-                                <rect key="frame" x="168.33333333333334" y="248" width="91.333333333333343" height="34"/>
-                                <state key="normal" title="Change">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msv-Iy-vLU">
+                                <rect key="frame" x="40.666666666666657" y="252" width="80" height="30"/>
+                                <state key="normal" title="USD">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="updateButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="88A-nL-z2e"/>
+                                    <action selector="leftCurrencyChangeButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bbM-Ug-1X4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msv-Iy-vLU">
-                                <rect key="frame" x="65.666666666666671" y="252" width="30" height="30"/>
-                                <state key="normal" title="Usd">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tlh-Ot-cu0">
-                                <rect key="frame" x="332" y="252" width="30" height="30"/>
-                                <state key="normal" title="Rub">
+                                <rect key="frame" x="307" y="252" width="80" height="30"/>
+                                <state key="normal" title="RUB">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="rightCurrencyChangeButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zsG-nl-In5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -87,30 +90,94 @@
                             <constraint firstItem="Tlh-Ot-cu0" firstAttribute="centerX" secondItem="fnR-dO-2ke" secondAttribute="centerX" id="Hfv-kb-IdZ"/>
                             <constraint firstItem="msv-Iy-vLU" firstAttribute="centerX" secondItem="JqF-Hh-64O" secondAttribute="centerX" id="ID6-H6-6LR"/>
                             <constraint firstItem="gjN-ZZ-J1W" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.275" id="Ol0-Rz-MWK"/>
-                            <constraint firstItem="nLQ-7y-8O9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.213333" id="Q9W-6E-3eP"/>
                             <constraint firstItem="JqF-Hh-64O" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.302667" id="S3x-Zx-Mba"/>
-                            <constraint firstItem="nLQ-7y-8O9" firstAttribute="top" secondItem="JqF-Hh-64O" secondAttribute="bottom" constant="7" id="TRQ-yr-7Hl"/>
+                            <constraint firstItem="msv-Iy-vLU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.186916" id="TJH-NY-tkr"/>
                             <constraint firstItem="yoa-IF-OLq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="UId-k4-UIH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aaT-U0-ioP" secondAttribute="trailing" constant="16" id="aUh-Rq-ywZ"/>
-                            <constraint firstItem="nLQ-7y-8O9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bP2-I5-h7K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fnR-dO-2ke" secondAttribute="trailing" constant="16" id="eIH-wt-DIG"/>
                             <constraint firstItem="Tlh-Ot-cu0" firstAttribute="top" secondItem="fnR-dO-2ke" secondAttribute="bottom" constant="11" id="n9F-Lb-1vQ"/>
                             <constraint firstItem="fnR-dO-2ke" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.303125" id="p1b-Ps-sb0"/>
                             <constraint firstItem="yoa-IF-OLq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qUv-Fn-Tnw"/>
+                            <constraint firstItem="Tlh-Ot-cu0" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.186916" id="zfL-Lm-Fsx"/>
                             <constraint firstItem="JqF-Hh-64O" firstAttribute="top" secondItem="gjN-ZZ-J1W" secondAttribute="bottom" constant="32" id="zxw-gO-39Q"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="changeButton" destination="nLQ-7y-8O9" id="d8h-F1-bww"/>
-                        <outlet property="leftNumberField" destination="JqF-Hh-64O" id="RFm-Ag-OR5"/>
-                        <outlet property="rightNumberField" destination="fnR-dO-2ke" id="Eqp-ti-wPN"/>
-                        <outlet property="updateButton" destination="gjN-ZZ-J1W" id="Ap0-JA-oj3"/>
-                        <outlet property="updateTimeButton" destination="aaT-U0-ioP" id="56k-yF-fez"/>
+                        <outlet property="leftCurrencyButton" destination="msv-Iy-vLU" id="ghe-D1-tIS"/>
+                        <outlet property="leftNumberField" destination="JqF-Hh-64O" id="2hI-Nf-blN"/>
+                        <outlet property="rightCurrecnyButon" destination="Tlh-Ot-cu0" id="2UE-Et-NLD"/>
+                        <outlet property="rightNumberField" destination="fnR-dO-2ke" id="7GQ-V8-nlK"/>
+                        <outlet property="updateButton" destination="gjN-ZZ-J1W" id="ash-Je-gXv"/>
+                        <outlet property="updateTimeButton" destination="aaT-U0-ioP" id="eqv-f6-b3X"/>
+                        <segue destination="xuo-iA-5jw" kind="show" identifier="showCurrencyList" id="Bfj-Ek-Hac"/>
+                        <segue destination="PeO-cu-2XT" kind="showDetail" identifier="showTimeChageList" id="0hd-6C-Ye3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-197.59999999999999" y="88.605697151424295"/>
+            <point key="canvasLocation" x="-197.66355140186914" y="88.120950323974085"/>
+        </scene>
+        <!--Timer Choose View Controller-->
+        <scene sceneID="IFI-64-cJ4">
+            <objects>
+                <tableViewController id="PeO-cu-2XT" customClass="TimerChooseViewController" customModule="Currency_Converter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VWz-kv-CDC">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimeCell" id="qx3-8E-wdv">
+                                <rect key="frame" x="0.0" y="28" width="428" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qx3-8E-wdv" id="1lU-Zw-QQ2">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PeO-cu-2XT" id="ZRg-Mh-PR5"/>
+                            <outlet property="delegate" destination="PeO-cu-2XT" id="rJX-Xl-CaQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="nRz-mg-dKu"/>
+                    <connections>
+                        <segue destination="vY7-q3-amc" kind="unwind" identifier="unwindToRoot" unwindAction="unwind:" id="j9e-jb-hK6"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lA3-gM-SM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="vY7-q3-amc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="-590"/>
+        </scene>
+        <!--Currency Choose View Controller-->
+        <scene sceneID="2lH-D1-Ur0">
+            <objects>
+                <tableViewController id="xuo-iA-5jw" customClass="CurrencyChooseViewController" customModule="Currency_Converter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ilf-AZ-oLb">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" id="kHB-yM-gIK">
+                                <rect key="frame" x="0.0" y="28" width="428" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kHB-yM-gIK" id="4eG-nw-Nfr">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xuo-iA-5jw" id="kcQ-BB-VfG"/>
+                            <outlet property="delegate" destination="xuo-iA-5jw" id="qLd-L6-HQG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ZF8-Kv-C6Y"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OOn-za-W8q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1138" y="88"/>
         </scene>
     </scenes>
     <resources>

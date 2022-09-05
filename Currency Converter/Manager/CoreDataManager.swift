@@ -33,6 +33,29 @@ class CoreDataManager {
         }
     }
 
+    func addRateToDB(currencyRateFirstToSecond: Double, currencyRateSecondToFirst: Double, currencyNameFirst: Currency, currencyNameSecond: Currency) {
+        DispatchQueue.main.async { [self] in
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            let managedContext = appDelegate.persistentContainer.viewContext
+
+            let entity =  NSEntityDescription.entity(forEntityName: "CurrencyRate",
+                                                     in: managedContext)
+
+            let rate = self.retrieveData()?.first
+
+            rate?.setValue(currencyRateFirstToSecond, forKey: currencyNameFirst.rawValue.lowercased() + currencyNameSecond.rawValue)
+            rate?.setValue(currencyRateSecondToFirst, forKey: currencyNameSecond.rawValue.lowercased() + currencyNameFirst.rawValue.uppercased())
+
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                print("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+    }
+
     func getRate(firstCurrency: Currency, secondCurrency: Currency) -> Double? {
         guard let currentRate = retrieveData() else {
             return nil

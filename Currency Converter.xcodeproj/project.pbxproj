@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		534D1D7F28C0E26600C33EFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D7E28C0E26600C33EFF /* ViewController.swift */; };
+		530B1EF428C61ACD0078B414 /* CurrencyChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530B1EF328C61ACD0078B414 /* CurrencyChooseViewController.swift */; };
+		531083B328C659A200BDB4C3 /* TimerChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531083B228C659A200BDB4C3 /* TimerChooseViewController.swift */; };
+		534D1D7F28C0E26600C33EFF /* CurrencyMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D7E28C0E26600C33EFF /* CurrencyMainViewController.swift */; };
 		534D1D8928C0E29000C33EFF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D8728C0E29000C33EFF /* NetworkManager.swift */; };
 		534D1D8A28C0E29000C33EFF /* CurrencyRateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D8828C0E29000C33EFF /* CurrencyRateModel.swift */; };
 		534D1D8F28C0E65600C33EFF /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534D1D8E28C0E65600C33EFF /* CurrencyConverterViewModel.swift */; };
@@ -40,7 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		534D1D7E28C0E26600C33EFF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		530B1EF328C61ACD0078B414 /* CurrencyChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyChooseViewController.swift; sourceTree = "<group>"; };
+		531083B228C659A200BDB4C3 /* TimerChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerChooseViewController.swift; sourceTree = "<group>"; };
+		534D1D7E28C0E26600C33EFF /* CurrencyMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyMainViewController.swift; sourceTree = "<group>"; };
 		534D1D8728C0E29000C33EFF /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		534D1D8828C0E29000C33EFF /* CurrencyRateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyRateModel.swift; sourceTree = "<group>"; };
 		534D1D8E28C0E65600C33EFF /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
@@ -170,7 +174,9 @@
 			isa = PBXGroup;
 			children = (
 				53EC011828C0832D001BA692 /* Main.storyboard */,
-				534D1D7E28C0E26600C33EFF /* ViewController.swift */,
+				534D1D7E28C0E26600C33EFF /* CurrencyMainViewController.swift */,
+				530B1EF328C61ACD0078B414 /* CurrencyChooseViewController.swift */,
+				531083B228C659A200BDB4C3 /* TimerChooseViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,12 +343,14 @@
 			files = (
 				53EC011D28C0832D001BA692 /* Currency_Converter.xcdatamodeld in Sources */,
 				539BCE7C28C1D3C10048EE4A /* DataManager.swift in Sources */,
-				534D1D7F28C0E26600C33EFF /* ViewController.swift in Sources */,
+				534D1D7F28C0E26600C33EFF /* CurrencyMainViewController.swift in Sources */,
 				534D1D8F28C0E65600C33EFF /* CurrencyConverterViewModel.swift in Sources */,
 				539BCE7328C1BF880048EE4A /* CoreDataManager.swift in Sources */,
 				53EC011328C0832D001BA692 /* AppDelegate.swift in Sources */,
 				534D1D8A28C0E29000C33EFF /* CurrencyRateModel.swift in Sources */,
 				534D1D8928C0E29000C33EFF /* NetworkManager.swift in Sources */,
+				530B1EF428C61ACD0078B414 /* CurrencyChooseViewController.swift in Sources */,
+				531083B328C659A200BDB4C3 /* TimerChooseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

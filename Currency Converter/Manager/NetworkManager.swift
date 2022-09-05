@@ -10,18 +10,6 @@ import Foundation
 public class NetworkManager {
     var apiClient = ApiClient()
 
-    //    func getCurrencyRate(firstCurrency: Currency, secondCurrency: Currency, completionHandler:@escaping ((Double, Double)) -> Void) {
-    //        ApiClient.getJsonCurrencyRate(firstCurrency: firstCurrency, secondCurrency: secondCurrency, completionHandler: { data in
-    //            guard let firstToSecond = data?.data., let usdRub = data?.data.secondCurrency else {
-    //                return
-    //            }
-    //            guard let intRubUSD = Double(firstToSecond), let intUsdRub = Double(usdRub) else {
-    //                return
-    //            }
-    //            completionHandler((firstToSecond, usdToRouble))
-    //        })
-    //    }
-
     func getCurrencyRate(firstCurrency: Currency, secondCurrency: Currency, completionHandler:@escaping ((String, String)) -> Void) {
         ApiClient.getJsonCurrencyRate(firstCurrency: firstCurrency, secondCurrency: secondCurrency, completionHandler: { data in
             guard let firstToSecond = data?.data[firstCurrency.rawValue + secondCurrency.rawValue],
