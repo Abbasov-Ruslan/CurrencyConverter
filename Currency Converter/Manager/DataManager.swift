@@ -12,30 +12,33 @@ class DataManager {
     var networkClient = NetworkManager()
     var coreDataManger = CoreDataManager()
 
-    func saveRoubleUsdRate() {
-        if !coreDataManger.isDatabaseHaveCash() {
+    func saveFirstCurrencyRateToDB(firstCurrency: Currency, secondCurrency: Currency) {
+//        if !coreDataManger.isDatabaseHaveCash() {
             self.coreDataManger.clearCurrencyDataBase()
+//        }
+        saveCurrencyRateToDB(firstCurrency: firstCurrency, secondCurrency: secondCurrency)
+    }
+
+    func getCurrencyRateFromServer(firstCurrency: Currency, secondCurrency: Currency) {
+        
+        saveFirstCurrencyRateToDB(firstCurrency: firstCurrency, secondCurrency: secondCurrency)
+    }
+
+    func getFirstToSecondCurrencyRate(firstCurrency: Currency, secondCurrency: Currency) -> Double?  {
+        guard let rate = coreDataManger.getRate(firstCurrency: firstCurrency, secondCurrency: secondCurrency) else {
+            print("core Data error")
+            return nil
         }
-        networkClient.getRoubleToDollarRate(completionHandler: { [weak self] rate in
-            self?.coreDataManger.saveRate(currencyRateFirstToSecond: rate.0, currencyRateSecondToFirst: rate.1, currencyRatioFirst: .rubUsd, currencyRatioSecond: .usdRub)
+        return rate
+    }
+
+
+    private func saveCurrencyRateToDB(firstCurrency: Currency, secondCurrency: Currency) {
+        networkClient.getCurrencyRate(firstCurrency: firstCurrency, secondCurrency: secondCurrency,completionHandler: { [weak self] rate in
+            let firstToSecondDouble = Double(rate.0) ?? 0
+            let secondToFirtstDouble = Double(rate.1) ?? 0
+            self?.coreDataManger.saveRate(currencyRateFirstToSecond: firstToSecondDouble, currencyRateSecondToFirst: secondToFirtstDouble, currencyNameFirst: firstCurrency, currencyNameSecond: secondCurrency)
         })
-    }
-
-
-    func getRoubleUsdRate() -> Double? {
-        guard let rate = coreDataManger.getRate(currencyRatio: .rubUsd) else {
-            print("core Data error")
-            return nil
-        }
-        return rate
-    }
-
-    func getUsdToRoubleRate() -> Double? {
-        guard let rate = coreDataManger.getRate(currencyRatio: .usdRub) else {
-            print("core Data error")
-            return nil
-        }
-        return rate
     }
 
 }

@@ -7,28 +7,31 @@
 
 import Foundation
 
-public class CurrencyNetworkModel: Codable {
+enum Currency: String {
+    case RUB
+    case USD
+    case EUR
+}
+
+public class CurrencyNetworkModel: Decodable {
     let status: Int
     let message: String
-    let data: DataClass
+    let data: [String: String]
 
-    init(status: Int, message: String, data: DataClass) {
+    init(status: Int, message: String, data: String) {
         self.status = status
         self.message = message
-        self.data = data
+        self.data = convertToDictionary(text: data) ?? [:]
     }
 }
 
-public class DataClass: Codable {
-    let rubusd, usdrub: String
-
-    enum CodingKeys: String, CodingKey {
-        case rubusd = "RUBUSD"
-        case usdrub = "USDRUB"
+func convertToDictionary(text: String) -> [String: String]? {
+    if let data = text.data(using: .utf8) {
+        do {
+            return try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
+        } catch {
+            print(error.localizedDescription)
+        }
     }
-
-    init(rubusd: String, usdrub: String) {
-        self.rubusd = rubusd
-        self.usdrub = usdrub
-    }
+    return nil
 }

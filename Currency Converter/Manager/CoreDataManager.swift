@@ -8,13 +8,8 @@
 import CoreData
 import UIKit
 
-enum RateCases: String {
-    case usdRub
-    case rubUsd
-}
-
 class CoreDataManager {
-    func saveRate(currencyRateFirstToSecond: Double, currencyRateSecondToFirst: Double, currencyRatioFirst: RateCases, currencyRatioSecond: RateCases) {
+    func saveRate(currencyRateFirstToSecond: Double, currencyRateSecondToFirst: Double, currencyNameFirst: Currency, currencyNameSecond: Currency) {
         DispatchQueue.main.async {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -27,8 +22,8 @@ class CoreDataManager {
             let rate = NSManagedObject(entity: entity!,
                                        insertInto: managedContext)
 
-            rate.setValue(currencyRateFirstToSecond, forKey: currencyRatioFirst.rawValue)
-            rate.setValue(currencyRateSecondToFirst, forKey: currencyRatioSecond.rawValue)
+            rate.setValue(currencyRateFirstToSecond, forKey: currencyNameFirst.rawValue.lowercased() + currencyNameSecond.rawValue)
+            rate.setValue(currencyRateSecondToFirst, forKey: currencyNameSecond.rawValue.lowercased() + currencyNameFirst.rawValue.uppercased())
 
             do {
                 try managedContext.save()
@@ -38,15 +33,16 @@ class CoreDataManager {
         }
     }
 
-    func getRate(currencyRatio: RateCases) -> Double? {
+    func getRate(firstCurrency: Currency, secondCurrency: Currency) -> Double? {
         guard let currentRate = retrieveData() else {
             return nil
         }
 
-        let rate = currentRate[0]
-        return rate.value(forKeyPath: currencyRatio.rawValue) as? Double
+        let rate = currentRate.first
+        return rate?.value(forKeyPath: firstCurrency.rawValue.lowercased() + secondCurrency.rawValue) as? Double
     }
 
+    
     func retrieveData() -> [NSManagedObject]? {
         var currentRate: [NSManagedObject] = []
 

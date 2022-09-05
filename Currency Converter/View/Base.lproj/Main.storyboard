@@ -23,38 +23,53 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjN-ZZ-J1W">
-                                <rect key="frame" x="16.000000000000007" y="145" width="117.66666666666669" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjN-ZZ-J1W">
+                                <rect key="frame" x="16.000000000000007" y="145" width="117.66666666666669" height="30"/>
                                 <state key="normal" title="Update">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaT-U0-ioP">
-                                <rect key="frame" x="294.33333333333331" y="147.66666666666666" width="117.66666666666669" height="29"/>
+                                <rect key="frame" x="294.33333333333331" y="145.66666666666666" width="117.66666666666669" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="15 min">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqF-Hh-64O">
-                                <rect key="frame" x="16" y="211" width="129.66666666666666" height="34"/>
+                                <rect key="frame" x="16" y="207" width="129.66666666666666" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="leftTextFieldChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="pDx-47-aqY"/>
+                                    <action selector="leftTextFieldChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="NhK-Jx-8dI"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fnR-dO-2ke">
-                                <rect key="frame" x="282.33333333333331" y="211" width="129.66666666666669" height="34"/>
+                                <rect key="frame" x="282.33333333333331" y="207" width="129.66666666666669" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="rightTextFieldChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="bPt-0g-unq"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-7y-8O9">
-                                <rect key="frame" x="168.33333333333334" y="252" width="91.333333333333343" height="30"/>
-                                <state key="normal" title="change">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-7y-8O9">
+                                <rect key="frame" x="168.33333333333334" y="248" width="91.333333333333343" height="34"/>
+                                <state key="normal" title="Change">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="88A-nL-z2e"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="msv-Iy-vLU">
+                                <rect key="frame" x="65.666666666666671" y="252" width="30" height="30"/>
+                                <state key="normal" title="Usd">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tlh-Ot-cu0">
+                                <rect key="frame" x="332" y="252" width="30" height="30"/>
+                                <state key="normal" title="Rub">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
@@ -67,7 +82,10 @@
                             <constraint firstItem="aaT-U0-ioP" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.275" id="2DM-c8-JLQ"/>
                             <constraint firstItem="fnR-dO-2ke" firstAttribute="centerY" secondItem="JqF-Hh-64O" secondAttribute="centerY" id="2eJ-Ql-CJS"/>
                             <constraint firstItem="gjN-ZZ-J1W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="7xU-fh-Unc"/>
+                            <constraint firstItem="msv-Iy-vLU" firstAttribute="top" secondItem="JqF-Hh-64O" secondAttribute="bottom" constant="11" id="8UF-CG-8NH"/>
                             <constraint firstItem="aaT-U0-ioP" firstAttribute="centerY" secondItem="gjN-ZZ-J1W" secondAttribute="centerY" id="ESI-ZQ-E5X"/>
+                            <constraint firstItem="Tlh-Ot-cu0" firstAttribute="centerX" secondItem="fnR-dO-2ke" secondAttribute="centerX" id="Hfv-kb-IdZ"/>
+                            <constraint firstItem="msv-Iy-vLU" firstAttribute="centerX" secondItem="JqF-Hh-64O" secondAttribute="centerX" id="ID6-H6-6LR"/>
                             <constraint firstItem="gjN-ZZ-J1W" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.275" id="Ol0-Rz-MWK"/>
                             <constraint firstItem="nLQ-7y-8O9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.213333" id="Q9W-6E-3eP"/>
                             <constraint firstItem="JqF-Hh-64O" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.302667" id="S3x-Zx-Mba"/>
@@ -76,6 +94,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aaT-U0-ioP" secondAttribute="trailing" constant="16" id="aUh-Rq-ywZ"/>
                             <constraint firstItem="nLQ-7y-8O9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bP2-I5-h7K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fnR-dO-2ke" secondAttribute="trailing" constant="16" id="eIH-wt-DIG"/>
+                            <constraint firstItem="Tlh-Ot-cu0" firstAttribute="top" secondItem="fnR-dO-2ke" secondAttribute="bottom" constant="11" id="n9F-Lb-1vQ"/>
                             <constraint firstItem="fnR-dO-2ke" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.303125" id="p1b-Ps-sb0"/>
                             <constraint firstItem="yoa-IF-OLq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qUv-Fn-Tnw"/>
                             <constraint firstItem="JqF-Hh-64O" firstAttribute="top" secondItem="gjN-ZZ-J1W" secondAttribute="bottom" constant="32" id="zxw-gO-39Q"/>

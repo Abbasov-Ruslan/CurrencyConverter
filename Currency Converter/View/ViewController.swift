@@ -22,9 +22,6 @@ class ViewController: UIViewController {
     @IBOutlet private weak var rightNumberField: UITextField!
     
     var viewModel = CurrencyConverterViewModel()
-    var currentLeftCurrency: CurrencyName = .dollar
-    var currentRightCurrency: CurrencyName = .rouble
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +30,17 @@ class ViewController: UIViewController {
         setupButton(button: changeButton)
     }
 
-    @IBAction func leftTextFieldChanged(_ sender: Any) {
+    @IBAction func leftTextFieldChange(_ sender: Any) {
         rightNumberField.text = getAssociatedTextFieldNumString(numberText: leftNumberField.text,
                                                                 exchangeDirection: .leftToRight)
     }
 
     @IBAction func rightTextFieldChange(_ sender: Any) {
         leftNumberField.text = getAssociatedTextFieldNumString(numberText: rightNumberField.text,
-                                                                exchangeDirection: .rightToLeft)
+                                                               exchangeDirection: .rightToLeft)
+    }
+
+    @IBAction func updateButtonPress(_ sender: Any) {
     }
 
     private func setupButton(button: UIButton) {
@@ -59,16 +59,23 @@ class ViewController: UIViewController {
 
         switch exchangeDirection {
         case .leftToRight:
-            resultString = viewModel.getExchangeResultAmountString(from: currentLeftCurrency,
-                                                            to: currentRightCurrency,
-                                                            currencyAmount: number)
+            resultString = viewModel.getExchangeResultAmountString(
+                from: viewModel.currentFirstCurrency,
+                to: viewModel.currentSecondCurrecny,
+                currencyAmount: number)
+
         case .rightToLeft:
-            resultString = viewModel.getExchangeResultAmountString(from: currentRightCurrency,
-                                                            to: currentLeftCurrency,
-                                                            currencyAmount: number)
+            resultString = viewModel.getExchangeResultAmountString(
+                from: viewModel.currentSecondCurrecny,
+                to: viewModel.currentFirstCurrency,
+                currencyAmount: number)
         }
         return resultString
     }
+
+
+
+
 
 }
 

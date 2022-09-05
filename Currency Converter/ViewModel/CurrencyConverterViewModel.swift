@@ -5,23 +5,19 @@
 //  Created by Ruslan Abbasov on 01.09.2022.
 //
 
-enum CurrencyName {
-    case dollar
-    case euro
-    case rouble
-}
-
 import Foundation
 
 class CurrencyConverterViewModel {
     var dataManager = DataManager()
+    var currentFirstCurrency: Currency = .RUB
+    var currentSecondCurrecny: Currency = .USD
 
     init() {
-        dataManager.saveRoubleUsdRate()
+        dataManager.saveFirstCurrencyRateToDB(firstCurrency: currentFirstCurrency, secondCurrency: currentSecondCurrecny)
     }
 
-    func getExchangeResultAmountString(from: CurrencyName,
-                                       to: CurrencyName,
+    func getExchangeResultAmountString(from: Currency,
+                                       to: Currency,
                                        currencyAmount: Double) -> String {
         let rate = getExchangeRate(currencyFrom: from, currencyTo: to)
         let resultNumber = rate * currencyAmount
@@ -29,15 +25,13 @@ class CurrencyConverterViewModel {
         return resultString
     }
 
-    private func getExchangeRate(currencyFrom: CurrencyName, currencyTo: CurrencyName) -> Double {
-        switch (currencyFrom, currencyTo) {
-        case (.rouble, .dollar):
-            return dataManager.getRoubleUsdRate() ?? 0
-        case (.dollar, .rouble):
-            return dataManager.getUsdToRoubleRate() ?? 0
-        default:
-            return 0
-        }
+    func updateCurrencyRate() {
+        dataManager.getCurrencyRateFromServer(firstCurrency: currentFirstCurrency , secondCurrency: currentSecondCurrecny)
     }
+
+    private func getExchangeRate(currencyFrom: Currency, currencyTo: Currency) -> Double {
+        return dataManager.getFirstToSecondCurrencyRate(firstCurrency: currentFirstCurrency, secondCurrency: currentSecondCurrecny) ?? 0
+    }
+    
 
 }
