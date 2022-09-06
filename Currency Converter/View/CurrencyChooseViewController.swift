@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CurrencyChooseViewController: UITableViewController  {
-    
+class CurrencyChooseViewController: UITableViewController {
+
     var currecyChoose: Currency = .EUR
     var currencySide: ExchnageDirection = .leftToRight
 
@@ -20,23 +20,23 @@ class CurrencyChooseViewController: UITableViewController  {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Currency.allCases.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath)
         cell.textLabel?.text = Currency.allCases[indexPath.row].rawValue
-        
+
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         currecyChoose = Currency.allCases[indexPath.row]
         performSegue(withIdentifier: "unwindFromCurrencyChoose", sender: nil)
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
         if segue.identifier == "unwindFromCurrencyChoose",
            let vc = segue.destination as? CurrencyMainViewController {

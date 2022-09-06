@@ -21,9 +21,9 @@ class CurrencyMainViewController: UIViewController {
     @IBOutlet private weak var rightCurrecnyButon: UIButton!
     @IBOutlet private weak var leftNumberField: UITextField!
     @IBOutlet private weak var rightNumberField: UITextField!
-    
+
     var viewModel = CurrencyConverterViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupButton(button: updateButton)
@@ -59,7 +59,6 @@ class CurrencyMainViewController: UIViewController {
         performSegue(withIdentifier: "showTimeChageList", sender: nil)
     }
 
-
     private func setupButton(button: UIButton) {
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
@@ -90,7 +89,7 @@ class CurrencyMainViewController: UIViewController {
         return resultString
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCurrencyList",
            let viewController = segue.destination as? CurrencyChooseViewController {
             viewController.currencySide = viewModel.currentCurrencyForChange
@@ -107,4 +106,3 @@ class CurrencyMainViewController: UIViewController {
     }
 
 }
-

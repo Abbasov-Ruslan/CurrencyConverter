@@ -40,9 +40,6 @@ class CoreDataManager {
             }
             let managedContext = appDelegate.persistentContainer.viewContext
 
-            let entity =  NSEntityDescription.entity(forEntityName: "CurrencyRate",
-                                                     in: managedContext)
-
             let rate = self.retrieveData()?.first
 
             rate?.setValue(currencyRateFirstToSecond, forKey: currencyNameFirst.rawValue.lowercased() + currencyNameSecond.rawValue)
@@ -65,7 +62,7 @@ class CoreDataManager {
         return rate?.value(forKeyPath: firstCurrency.rawValue.lowercased() + secondCurrency.rawValue) as? Double
     }
 
-    
+
     func retrieveData() -> [NSManagedObject]? {
         var currentRate: [NSManagedObject] = []
 

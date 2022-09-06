@@ -37,7 +37,7 @@ class TimerChooseViewController: UITableViewController {
         performSegue(withIdentifier: "unwindToRoot", sender: nil)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)  {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToRoot",
            let viewController = segue.destination as? CurrencyMainViewController {
             viewController.viewModel.timePeriodForUpdate = TimeInterval(resultPeriod)

@@ -38,18 +38,17 @@ class CurrencyConverterViewModel {
         return dataManager.getFirstToSecondCurrencyRate(firstCurrency: currentFirstCurrency, secondCurrency: currentSecondCurrecny) ?? 0
     }
 
-
-    func restartTimer(timeInterval: TimeInterval)  {
+    func restartTimer(timeInterval: TimeInterval) {
         updateTimer.invalidate()
         scheduledTimerWithTimeInterval(timeInterval: timeInterval)
     }
 
-    private func scheduledTimerWithTimeInterval(timeInterval: TimeInterval){
+    private func scheduledTimerWithTimeInterval(timeInterval: TimeInterval) {
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
         updateTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.updateCounting), userInfo: nil, repeats: true)
     }
 
-    @objc func updateCounting(){
+    @objc func updateCounting() {
         updateCurrencyRate()
     }
 }
