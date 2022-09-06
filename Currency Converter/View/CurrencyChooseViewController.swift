@@ -11,7 +11,12 @@ class CurrencyChooseViewController: UITableViewController  {
     
     var currecyChoose: Currency = .EUR
     var currencySide: ExchnageDirection = .leftToRight
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+    }
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
