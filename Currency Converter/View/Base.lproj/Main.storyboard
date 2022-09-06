@@ -174,8 +174,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ZF8-Kv-C6Y"/>
+                    <connections>
+                        <segue destination="eJ1-tM-pL3" kind="unwind" identifier="unwindFromCurrencyChoose" unwindAction="unwindFromCurrencyChoose:" id="L3q-zk-Muc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OOn-za-W8q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="eJ1-tM-pL3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1138" y="88"/>
         </scene>

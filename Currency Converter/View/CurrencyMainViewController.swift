@@ -101,5 +101,10 @@ class CurrencyMainViewController: UIViewController {
         updateTimeButton.setTitle(String(viewModel.timePeriodForUpdate), for: .normal)
     }
 
+    @IBAction func unwindFromCurrencyChoose( _ seg: UIStoryboardSegue) {
+        leftCurrencyButton.setTitle(viewModel.currentFirstCurrency.rawValue, for: .normal)
+        rightCurrecnyButon.setTitle(viewModel.currentSecondCurrecny.rawValue, for: .normal)
+    }
+
 }
 
